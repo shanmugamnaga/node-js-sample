@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     def destinationPath = "C:\\Users\\shanm\\Downloads\\Dev_Env"
-                    bat 'powershell -Command "Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force"'
+                    
                     bat "rmdir /s /q \"${destinationPath}\" && mkdir \"${destinationPath}\""
 
                     bat "xcopy /Y \"${env.WORKSPACE}\\package.json\" \"${destinationPath}\""
