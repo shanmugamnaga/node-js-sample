@@ -9,7 +9,7 @@ pipeline {
         }
     }
     
-    stage('Install Dependencies') {
+        stage('Install Dependencies') {
             steps {
                 script {
                     def npmHome = tool name: 'NodeJS', type: 'hudson.plugins.nodejs.tools.NodeJSInstallation'
@@ -17,5 +17,5 @@ pipeline {
                     bat 'npm install'
                 }
             }
-    }
+        }
 }
