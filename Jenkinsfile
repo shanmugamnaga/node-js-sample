@@ -14,8 +14,8 @@ pipeline {
                 script {
                     def npmHome = tool name: 'NodeJS', type: 'hudson.plugins.nodejs.tools.NodeJSInstallation'
                     env.PATH = "${npmHome}/bin:${env.PATH}"
-                    sh 'npm install'
+                    bat 'npm install'
                 }
             }
-        }
+    }
 }
