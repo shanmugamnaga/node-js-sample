@@ -21,6 +21,18 @@ pipeline {
                 bat 'npm run build'
             }
         }
+        stage('Copy to Deployment Path') {
+            steps {
+                script {
+                    def destinationPath = "C:\Users\shanm\OneDrive\Documents\Dev_Env"
+                    bat "mkdir ${destinationPath}"
+                    bat "xcopy /E /I /Y package.json package-lock.json index.js ${destinationPath}"
+                    bat "xcopy /E /I /Y public ${destinationPath}\\public"
+                    bat "cd ${destinationPath} && start /B npm start"
+                    
+                }
+            }
+        }
     }
 
     post {
