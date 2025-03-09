@@ -36,8 +36,7 @@ pipeline {
                     bat "xcopy /E /I /Y \"${env.WORKSPACE}\\node_modules\" \"${destinationPath}\\node_modules\""
 
                     // Change Directory & Start Application
-                    bat "cd /d \"${destinationPath}\" && start /B cmd /k \"npm start\""
-
+                    bat "cd /d \"${destinationPath}\" && start /B cmd /k \"node index.js\""
 
                     
                 }
