@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/shanmugamnaga/node-js-sample.git'
+                git branch: 'master', url: 'https://github.com/shanmugamnaga/node-js-sample.git'
             }
         }
         stage('Install Dependencies') {
