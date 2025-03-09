@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     def destinationPath = "C:\\Users\\shanm\\Downloads\\Dev_Env"
-                    
+                    bat 'powershell -Command "Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force"'
                     bat "rmdir /s /q \"${destinationPath}\" && mkdir \"${destinationPath}\""
 
                     bat "xcopy /Y \"${env.WORKSPACE}\\package.json\" \"${destinationPath}\""
@@ -37,7 +37,7 @@ pipeline {
                     bat "xcopy /E /I /Y \"${env.WORKSPACE}\\node_modules\" \"${destinationPath}\\node_modules\""
 
                     // Change Directory & Start Application
-                    bat "start /B cmd /c \"cd /d ${destinationPath} && npm start\""
+                    bat "start /B cmd /c \"cd /d ${destinationPath} && node index.js > output.log 2>&1\""
 
                     
                 }
