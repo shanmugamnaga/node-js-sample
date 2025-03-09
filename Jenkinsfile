@@ -7,8 +7,6 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/shanmugamnaga/node-js-sample.git'
             }
         }
-    }
-    
         stage('Install Dependencies') {
             steps {
                 script {
@@ -18,4 +16,7 @@ pipeline {
                 }
             }
         }
+    }
+    
+        
 }
