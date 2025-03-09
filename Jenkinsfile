@@ -7,4 +7,5 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/shanmugamnaga/node-js-sample.git'
             }
         }
+    }
 }
