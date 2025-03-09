@@ -25,6 +25,7 @@ pipeline {
             steps {
                 script {
                     def destinationPath = "C:\\Users\\shanm\\Downloads\\Dev_Env"
+                    bat "taskkill /F /IM node.exe /T"
                     bat "rmdir /s /q \"${destinationPath}\" && mkdir \"${destinationPath}\""
 
                     bat "xcopy /Y \"${env.WORKSPACE}\\package.json\" \"${destinationPath}\""
@@ -36,7 +37,7 @@ pipeline {
                     bat "xcopy /E /I /Y \"${env.WORKSPACE}\\node_modules\" \"${destinationPath}\\node_modules\""
 
                     // Change Directory & Start Application
-                    bat "cd /d \"${destinationPath}\" && start /B cmd /k \"node index.js\""
+                    bat "start /B cmd /c \"cd /d ${destinationPath} && npm start\""
 
                     
                 }
