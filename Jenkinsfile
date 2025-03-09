@@ -8,4 +8,14 @@ pipeline {
             }
         }
     }
+    
+    stage('Install Dependencies') {
+            steps {
+                script {
+                    def npmHome = tool name: 'NodeJS', type: 'hudson.plugins.nodejs.tools.NodeJSInstallation'
+                    env.PATH = "${npmHome}/bin:${env.PATH}"
+                    sh 'npm install'
+                }
+            }
+        }
 }
