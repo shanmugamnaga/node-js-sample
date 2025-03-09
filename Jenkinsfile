@@ -24,7 +24,7 @@ pipeline {
         stage('Copy to Deployment Path') {
             steps {
                 script {
-                    def destinationPath = "C:\Users\shanm\Downloads\Dev_Env"
+                    def destinationPath = "C:\\Users\\shanm\\Downloads\\Dev_Env"
                     bat "mkdir ${destinationPath}"
                     bat "xcopy /E /I /Y package.json package-lock.json index.js ${destinationPath}"
                     bat "xcopy /E /I /Y public ${destinationPath}\\public"
