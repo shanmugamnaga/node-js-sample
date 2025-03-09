@@ -7,6 +7,14 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/shanmugamnaga/node-js-sample.git'
             }
         }
+        stage('Debug NodeJS Installation') {
+            steps {
+                script {
+                    def tools = hudson.model.Hudson.instance.getDescriptorByType(jenkins.plugins.nodejs.tools.NodeJSInstallation.DescriptorImpl).installations
+                    echo "Available NodeJS installations: ${tools.collect { it.name }}"
+                }
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 script {
