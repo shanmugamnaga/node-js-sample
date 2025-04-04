@@ -13,7 +13,6 @@ pipeline {
                 script {
                     def npmHome = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                     env.PATH = "${npmHome}/bin:${env.PATH}"
-                    bat 'npm install -g pm2'  // Install PM2 globally
                     bat 'npm install'         // Install project dependencies
                 }
             }
@@ -42,19 +41,9 @@ pipeline {
                     bat "xcopy /E /I /Y \"${env.WORKSPACE}\\public\" \"${destinationPath}\\public\""
                     bat "xcopy /E /I /Y \"${env.WORKSPACE}\\node_modules\" \"${destinationPath}\\node_modules\""
 
-                    // Start Node.js application using PM2
-                    bat "pm2 delete node_app || echo 'No existing process'"
-                    bat "pm2 start ${destinationPath}\\index.js --name node_app"
-                    bat "pm2 save"  // Save process state to restart on system reboot
+                    bat "cd /d \"${destinationPath}\" && cmd /c \"npm start\""
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline Completed'
-            bat "pm2 list"  // Check running processes
         }
     }
 }
